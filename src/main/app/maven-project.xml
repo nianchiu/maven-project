@@ -29,15 +29,15 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 
     <flow name="retrieveFlights">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/flights" doc:name="HTTP"/>
-        <db:select config-ref="Derby_Configuration" doc:name="Database">
+        <db:select config-ref="Derby_Configuration" doc:name="Select Flights">
             <db:parameterized-query><![CDATA[SELECT * FROM FLIGHTS]]></db:parameterized-query>
         </db:select>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <jms:outbound-endpoint queue="flights" connector-ref="Active_MQ" doc:name="JMS"/>
+        <jms:outbound-endpoint queue="flights" connector-ref="Active_MQ" doc:name="Flights"/>
     </flow>
 
     <flow name="logFlights">
-        <jms:inbound-endpoint queue="flights" connector-ref="Active_MQ" doc:name="JMS"/>
+        <jms:inbound-endpoint queue="flights" connector-ref="Active_MQ" doc:name="Flights"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
     </flow>
 
