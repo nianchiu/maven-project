@@ -15,8 +15,7 @@
 		<mule.version>3.8.5</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
 		<!-- more properties here -->
-		<derby.version>10.12.1.1</derby.version>
-		<activemq-all.version>5.15.4</activemq-all.version>
+		<derby.version>10.14.1.0</derby.version>
 	</properties>
 
 	<build>
@@ -59,7 +58,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<!-- Mule Dependencies -->
 	<dependencies>
 		<!-- Xml configuration -->
@@ -128,8 +126,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-all</artifactId>
-			<version>${activemq-all.version}</version>
+			<artifactId>activemq-client</artifactId>
+			<version>5.15.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>5.15.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-kahadb-store</artifactId>
+			<version>5.15.4</version>
 		</dependency>
 		<!-- for testing -->
 		<dependency>
